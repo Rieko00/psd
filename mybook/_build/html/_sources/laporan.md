@@ -1,17 +1,26 @@
-# Segmentasi Pelanggan Penjualan Online
+# Prediksi Saham
 
 ## Pendahuluan
 
 ### Latar Belakang
 
-Dalam industri penjualan online, memperkuat hubungan antara customer adalah tujuan utama bagi perusahaan untuk memperoleh keuntungan yang maksimal dalam persaingan pasar yang semakin ketat. Perusahaan dituntut untuk memahami keinginan pelanggan dan meningkatkan pemahaman perusahaan tentang kebutuhan pelanggan agar dapat mempertahankan loyalitas pelanggan terhadap perusahaan mereka.
+Investasi saham telah menjadi salah satu instrumen yang populer di kalangan masyarakat, baik di Indonesia maupun secara global. Saham PT Bank Central Asia Tbk (BBCA) merupakan salah satu saham yang paling diminati oleh para investor karena kestabilannya dan prospek pertumbuhannya yang positif dalam jangka panjang. Namun, fluktuasi harga saham yang tidak dapat diprediksi menjadi tantangan bagi para investor, terutama yang menggunakan strategi jangka pendek. Dengan semakin berkembangnya teknologi dan ketersediaan data, metode prediksi harga saham berbasis sains data semakin relevan untuk memberikan panduan yang lebih baik dalam pengambilan keputusan investasi.
 
-Dalam persaingan bisnis yang semakin ketat, perusahaan harus mampu menjaga hubungan yang baik dengan pelanggan mereka. Salah satu strategi yang efektif dalam menjaga hubungan tersebut adalah melalui segmentasi pelanggan, yang melibatkan pengelompokan pelanggan dengan kesamaan karakteristik tertentu. Segmentasi pelanggan adalah pendekatan yang membantu perusahaan membagi basis pelanggan mereka menjadi kelompok suatu yang berbeda, berdasarkan karakteristik dan perilaku pelanggan yang serupa. Segmentasi pelanggan merupakan langkah awal yang dapat memungkinkan perusahaan mengembangkan strategi yang lebih tepat dan akurat sesuai dengan segmentasi kelompok pelanggan. Setelah perusahaan berhasil mengidentifikasi kelompok pelanggan yang berbeda, langkah berikutnya adalah mengembangkan rencana yang tepat untuk masing-masing kelompok pelanggan tersebut
+Pada proyek ini, pendekatan berbasis machine learning akan digunakan untuk memprediksi harga saham BBCA dengan memanfaatkan data historis harga saham BBCA. Penggunaan teknologi ini diharapkan dapat membantu investor dalam mengambil keputusan yang lebih tepat dan mengurangi risiko investasi.
 
 ### Rumusan Masalah
 
-Dalam era persaingan pasar yang semakin ketat, memahami faktor-faktor yang mempengaruhi loyalitas atau kesetiaan pelanggan menjadi sangat krusial. Salah satu tantangan utama yang dihadapi adalah bagaimana perusahaan dapat lebih memahami apa yang dibutuhkan pelanggan mereka. Dengan mengelompokkan pelanggan menjadi beberapa segmen sesuai dengan karakteristik perilaku pelanggan, diharapkan menjadi solusi bagi perusahaan agar dapat mengembangkan strategi pemasaran sesuai dengan setiap segmen pelanggan.
+Masalah utama yang dihadapi oleh investor saham adalah ketidakpastian dalam memprediksi pergerakan harga saham di masa depan. Pada proyek ini, beberapa pertanyaan penelitian yang ingin dijawab antara lain:
+
+- Apakah algoritma machine learning dapat secara akurat memprediksi harga saham BBCA berdasarkan data historis?
+- Faktor-faktor atau indikator apa yang paling berpengaruh terhadap prediksi harga saham BBCA?
+- Bagaimana tingkat akurasi model prediksi jika dibandingkan dengan metode konvensional atau strategi investasi lainnya?
 
 ### Tujuan
 
-Dengan memahami dan mengimplementasikan metode segmentasi pelanggan, perusahaan dapat memahami lebih dalam tentang kebutuhan setiap pelanggan melalui segmentasi yang tepat. Dengan membagi pelanggan ke dalam kelompok-kelompok yang lebih terfokus, perusahaan dapat mengembangkan strategi pemasaran dan pelayanan yang lebih relevan dan sesuai dengan kebutuhan masing-masing segmen pelanggan. Pada akhirnya, dengan memanfaatkan karakteristik setiap pelanggan, perusahaan dapat menciptakan pengalaman berbelanja yang lebih relevan dan memuaskan bagi semua segmen pelanggan.
+Proyek ini bertujuan untuk:
+
+- Mengembangkan model prediksi harga saham BBCA menggunakan algoritma machine learning berdasarkan data historis dan indikator teknikal.
+- Mengidentifikasi faktor-faktor atau variabel yang paling berpengaruh dalam menentukan harga saham BBCA.
+- Menyediakan alat bantu yang dapat membantu investor dalam membuat keputusan investasi yang lebih baik dengan menggunakan hasil prediksi - dari model yang dibangun.
+- Mengevaluasi kinerja model prediksi dalam hal akurasi dan keandalannya dibandingkan dengan metode konvensional.

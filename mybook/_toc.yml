@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
   - file: laporan
+  - file: memahami-data
   - file: file-laporan
 # - file: notebooks
 # - file: markdown-notebooks

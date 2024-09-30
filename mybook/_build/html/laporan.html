@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Segmentasi Pelanggan Penjualan Online &#8212; Proyek Sain Data</title>
+    <title>Prediksi Saham &#8212; Proyek Sain Data</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'laporan';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="File Laporan" href="file-laporan.html" />
+    <link rel="next" title="Data Understanding" href="memahami-data.html" />
     <link rel="prev" title="Selamat datang" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,7 +180,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Segmentasi Pelanggan Penjualan Online</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Saham</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memahami-data.html">Data Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file-laporan.html">File Laporan</a></li>
 </ul>
 
@@ -367,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Segmentasi Pelanggan Penjualan Online</h1>
+    <h1>Prediksi Saham</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,22 +395,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="segmentasi-pelanggan-penjualan-online">
-<h1>Segmentasi Pelanggan Penjualan Online<a class="headerlink" href="#segmentasi-pelanggan-penjualan-online" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-saham">
+<h1>Prediksi Saham<a class="headerlink" href="#prediksi-saham" title="Link to this heading">#</a></h1>
 <section id="pendahuluan">
 <h2>Pendahuluan<a class="headerlink" href="#pendahuluan" title="Link to this heading">#</a></h2>
 <section id="latar-belakang">
 <h3>Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h3>
-<p>Dalam industri penjualan online, memperkuat hubungan antara customer adalah tujuan utama bagi perusahaan untuk memperoleh keuntungan yang maksimal dalam persaingan pasar yang semakin ketat. Perusahaan dituntut untuk memahami keinginan pelanggan dan meningkatkan pemahaman perusahaan tentang kebutuhan pelanggan agar dapat mempertahankan loyalitas pelanggan terhadap perusahaan mereka.</p>
-<p>Dalam persaingan bisnis yang semakin ketat, perusahaan harus mampu menjaga hubungan yang baik dengan pelanggan mereka. Salah satu strategi yang efektif dalam menjaga hubungan tersebut adalah melalui segmentasi pelanggan, yang melibatkan pengelompokan pelanggan dengan kesamaan karakteristik tertentu. Segmentasi pelanggan adalah pendekatan yang membantu perusahaan membagi basis pelanggan mereka menjadi kelompok suatu yang berbeda, berdasarkan karakteristik dan perilaku pelanggan yang serupa. Segmentasi pelanggan merupakan langkah awal yang dapat memungkinkan perusahaan mengembangkan strategi yang lebih tepat dan akurat sesuai dengan segmentasi kelompok pelanggan. Setelah perusahaan berhasil mengidentifikasi kelompok pelanggan yang berbeda, langkah berikutnya adalah mengembangkan rencana yang tepat untuk masing-masing kelompok pelanggan tersebut</p>
+<p>Investasi saham telah menjadi salah satu instrumen yang populer di kalangan masyarakat, baik di Indonesia maupun secara global. Saham PT Bank Central Asia Tbk (BBCA) merupakan salah satu saham yang paling diminati oleh para investor karena kestabilannya dan prospek pertumbuhannya yang positif dalam jangka panjang. Namun, fluktuasi harga saham yang tidak dapat diprediksi menjadi tantangan bagi para investor, terutama yang menggunakan strategi jangka pendek. Dengan semakin berkembangnya teknologi dan ketersediaan data, metode prediksi harga saham berbasis sains data semakin relevan untuk memberikan panduan yang lebih baik dalam pengambilan keputusan investasi.</p>
+<p>Pada proyek ini, pendekatan berbasis machine learning akan digunakan untuk memprediksi harga saham BBCA dengan memanfaatkan data historis harga saham BBCA. Penggunaan teknologi ini diharapkan dapat membantu investor dalam mengambil keputusan yang lebih tepat dan mengurangi risiko investasi.</p>
 </section>
 <section id="rumusan-masalah">
 <h3>Rumusan Masalah<a class="headerlink" href="#rumusan-masalah" title="Link to this heading">#</a></h3>
-<p>Dalam era persaingan pasar yang semakin ketat, memahami faktor-faktor yang mempengaruhi loyalitas atau kesetiaan pelanggan menjadi sangat krusial. Salah satu tantangan utama yang dihadapi adalah bagaimana perusahaan dapat lebih memahami apa yang dibutuhkan pelanggan mereka. Dengan mengelompokkan pelanggan menjadi beberapa segmen sesuai dengan karakteristik perilaku pelanggan, diharapkan menjadi solusi bagi perusahaan agar dapat mengembangkan strategi pemasaran sesuai dengan setiap segmen pelanggan.</p>
+<p>Masalah utama yang dihadapi oleh investor saham adalah ketidakpastian dalam memprediksi pergerakan harga saham di masa depan. Pada proyek ini, beberapa pertanyaan penelitian yang ingin dijawab antara lain:</p>
+<ul class="simple">
+<li><p>Apakah algoritma machine learning dapat secara akurat memprediksi harga saham BBCA berdasarkan data historis?</p></li>
+<li><p>Faktor-faktor atau indikator apa yang paling berpengaruh terhadap prediksi harga saham BBCA?</p></li>
+<li><p>Bagaimana tingkat akurasi model prediksi jika dibandingkan dengan metode konvensional atau strategi investasi lainnya?</p></li>
+</ul>
 </section>
 <section id="tujuan">
 <h3>Tujuan<a class="headerlink" href="#tujuan" title="Link to this heading">#</a></h3>
-<p>Dengan memahami dan mengimplementasikan metode segmentasi pelanggan, perusahaan dapat memahami lebih dalam tentang kebutuhan setiap pelanggan melalui segmentasi yang tepat. Dengan membagi pelanggan ke dalam kelompok-kelompok yang lebih terfokus, perusahaan dapat mengembangkan strategi pemasaran dan pelayanan yang lebih relevan dan sesuai dengan kebutuhan masing-masing segmen pelanggan. Pada akhirnya, dengan memanfaatkan karakteristik setiap pelanggan, perusahaan dapat menciptakan pengalaman berbelanja yang lebih relevan dan memuaskan bagi semua segmen pelanggan.</p>
+<p>Proyek ini bertujuan untuk:</p>
+<ul class="simple">
+<li><p>Mengembangkan model prediksi harga saham BBCA menggunakan algoritma machine learning berdasarkan data historis dan indikator teknikal.</p></li>
+<li><p>Mengidentifikasi faktor-faktor atau variabel yang paling berpengaruh dalam menentukan harga saham BBCA.</p></li>
+<li><p>Menyediakan alat bantu yang dapat membantu investor dalam membuat keputusan investasi yang lebih baik dengan menggunakan hasil prediksi - dari model yang dibangun.</p></li>
+<li><p>Mengevaluasi kinerja model prediksi dalam hal akurasi dan keandalannya dibandingkan dengan metode konvensional.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -454,11 +466,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="file-laporan.html"
+       href="memahami-data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">File Laporan</p>
+        <p class="prev-next-title">Data Understanding</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'laporan';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Understanding" href="memahami-data.html" />
+    <link rel="next" title="File Laporan" href="file-laporan.html" />
     <link rel="prev" title="Selamat datang" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,7 +181,8 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Saham</a></li>
-<li class="toctree-l1"><a class="reference internal" href="memahami-data.html">Data Understanding</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="file-laporan.html">File Laporan</a></li>
 </ul>
 
@@ -378,6 +379,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Saham</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumusan-masalah">Rumusan Masalah</a></li>
@@ -385,6 +387,19 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">Pengumpulan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-value">Null Value</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -423,6 +438,335 @@ document.write(`
 <li><p>Mengevaluasi kinerja model prediksi dalam hal akurasi dan keandalannya dibandingkan dengan metode konvensional.</p></li>
 </ul>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="pengumpulan-data">
+<h2>Pengumpulan Data<a class="headerlink" href="#pengumpulan-data" title="Link to this heading">#</a></h2>
+<p>Dalam proyek ini, data historis saham dari Bank Central Asia (BBCA) dikumpulkan untuk dianalisis. Data diambil dari situs <a class="reference external" href="https://www.investing.com/equities/bnk-central-as-historical-data">Investing</a>, yang menyediakan informasi lengkap terkait pergerakan harga saham selama periode yang ditentukan. Proses pengumpulan data dilakukan dengan mengekspor data dalam bentuk file CSV. Data yang terkumpul mencakup rentang waktu mulai dari tahun 2015 hingga 2024, dengan total 2361 baris data yang mewakili tiap hari perdagangan selama periode tersebut.</p>
+</section>
+<section id="deskripsi-data">
+<h2>Deskripsi Data<a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h2>
+<p>Data saham yang diambil memilik 7 fitur atau kolom, yaitu :</p>
+<ul class="simple">
+<li><p>Tanggal : Tanggal perdagangan saham dengan format YYYY-MM-DD.</p></li>
+<li><p>Terakhir : Harga penutupan (Close) saham pada akhir hari perdagangan.</p></li>
+<li><p>Pembukaan : Harga saham saat pembukaan (Open) pasar pada awal hari perdagangan.</p></li>
+<li><p>Tertinggi : Harga tertinggi yang dicapai oleh saham selama hari perdagangan.</p></li>
+<li><p>Terendah : Harga terendah yang dicapai oleh saham selama hari perdagangan.</p></li>
+<li><p>Vol.: Volume saham yang diperdagangkan selama hari tersebut.</p></li>
+<li><p>Perubahan% : Persentase perubahan harga saham dibandingkan dengan hari perdagangan sebelumnya.</p></li>
+</ul>
+</section>
+<section id="exploratory-data-analysis-eda">
+<h2>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># Use raw.githubusercontent.com to access raw data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/Rieko00/psd/main/bbca_csv.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tanggal</th>
+      <th>Terakhir</th>
+      <th>Pembukaan</th>
+      <th>Tertinggi</th>
+      <th>Terendah</th>
+      <th>Vol.</th>
+      <th>Perubahan%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2024-09-27</td>
+      <td>10650</td>
+      <td>10500</td>
+      <td>10750</td>
+      <td>10400</td>
+      <td>93030000</td>
+      <td>-0.0047</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-09-26</td>
+      <td>10700</td>
+      <td>10875</td>
+      <td>10875</td>
+      <td>10675</td>
+      <td>84960000</td>
+      <td>-0.0138</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2024-09-25</td>
+      <td>10850</td>
+      <td>10675</td>
+      <td>10850</td>
+      <td>10525</td>
+      <td>158370000</td>
+      <td>0.0046</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2024-09-24</td>
+      <td>10800</td>
+      <td>10775</td>
+      <td>10950</td>
+      <td>10775</td>
+      <td>105190000</td>
+      <td>-0.0137</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024-09-23</td>
+      <td>10950</td>
+      <td>10725</td>
+      <td>10950</td>
+      <td>10725</td>
+      <td>72550000</td>
+      <td>0.0162</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2361 entries, 0 to 2360
+Data columns (total 7 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   Tanggal     2361 non-null   object 
+ 1   Terakhir    2361 non-null   int64  
+ 2   Pembukaan   2361 non-null   int64  
+ 3   Tertinggi   2361 non-null   int64  
+ 4   Terendah    2361 non-null   int64  
+ 5   Vol.        2361 non-null   int64  
+ 6   Perubahan%  2361 non-null   float64
+dtypes: float64(1), int64(5), object(1)
+memory usage: 129.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Terakhir</th>
+      <th>Pembukaan</th>
+      <th>Tertinggi</th>
+      <th>Terendah</th>
+      <th>Vol.</th>
+      <th>Perubahan%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2361.000000</td>
+      <td>2361.000000</td>
+      <td>2361.000000</td>
+      <td>2361.000000</td>
+      <td>2.361000e+03</td>
+      <td>2361.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>13163.716645</td>
+      <td>13163.731470</td>
+      <td>13279.758577</td>
+      <td>13045.664972</td>
+      <td>5.258618e+07</td>
+      <td>0.000361</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6956.742500</td>
+      <td>6954.951351</td>
+      <td>7008.344719</td>
+      <td>6896.720711</td>
+      <td>5.244959e+07</td>
+      <td>0.022031</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4430.000000</td>
+      <td>4450.000000</td>
+      <td>4800.000000</td>
+      <td>4325.000000</td>
+      <td>3.810000e+06</td>
+      <td>-0.800300</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7500.000000</td>
+      <td>7500.000000</td>
+      <td>7575.000000</td>
+      <td>7425.000000</td>
+      <td>1.441000e+07</td>
+      <td>-0.006500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10200.000000</td>
+      <td>10225.000000</td>
+      <td>10300.000000</td>
+      <td>10150.000000</td>
+      <td>3.862000e+07</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>16700.000000</td>
+      <td>16750.000000</td>
+      <td>16900.000000</td>
+      <td>16625.000000</td>
+      <td>7.550000e+07</td>
+      <td>0.007400</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>31450.000000</td>
+      <td>31350.000000</td>
+      <td>31450.000000</td>
+      <td>31025.000000</td>
+      <td>7.564300e+08</td>
+      <td>0.173300</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+<span class="n">corelation_matrix</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corelation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4717b2fecf4cce4e714e5fd02ce7369837035403ac3df90a3f2ae4b1c6a296ef.png" src="_images/4717b2fecf4cce4e714e5fd02ce7369837035403ac3df90a3f2ae4b1c6a296ef.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_column</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">num_rows</span> <span class="o">=</span> <span class="n">num_column</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">num_column</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">num_column</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_numeric</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12c9659c5104cb18963011289e54f684c7716f3e5d817309ff4d8ff08eab3694.png" src="_images/12c9659c5104cb18963011289e54f684c7716f3e5d817309ff4d8ff08eab3694.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Terakhir&#39;</span><span class="p">,</span> <span class="s1">&#39;Pembukaan&#39;</span><span class="p">,</span> <span class="s1">&#39;Tertinggi&#39;</span><span class="p">,</span> <span class="s1">&#39;Terendah&#39;</span><span class="p">,</span> <span class="s1">&#39;Vol.&#39;</span><span class="p">,</span> <span class="s1">&#39;Perubahan%&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/901424ecc1169d50311c7b99e7a812747abc60975a2011452c5093f3b2b4504a.png" src="_images/901424ecc1169d50311c7b99e7a812747abc60975a2011452c5093f3b2b4504a.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-prepocessing">
+<h1>Data Prepocessing<a class="headerlink" href="#data-prepocessing" title="Link to this heading">#</a></h1>
+<section id="null-value">
+<h2>Null Value<a class="headerlink" href="#null-value" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanggal       0
+Terakhir      0
+Pembukaan     0
+Tertinggi     0
+Terendah      0
+Vol.          0
+Perubahan%    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -466,11 +810,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="memahami-data.html"
+       href="file-laporan.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Understanding</p>
+        <p class="prev-next-title">File Laporan</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -490,6 +834,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Prediksi Saham</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumusan-masalah">Rumusan Masalah</a></li>
@@ -497,6 +842,19 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">Pengumpulan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-value">Null Value</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

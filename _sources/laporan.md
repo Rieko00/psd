@@ -39,13 +39,13 @@ Proyek ini bertujuan untuk:
 - Menyediakan alat bantu yang dapat membantu investor dalam membuat keputusan investasi yang lebih baik dengan menggunakan hasil prediksi - dari model yang dibangun.
 - Mengevaluasi kinerja model prediksi dalam hal akurasi dan keandalannya dibandingkan dengan metode konvensional.
 
-# Data Understanding
+## Data Understanding
 
-## Pengumpulan Data
+### Pengumpulan Data
 
 Dalam proyek ini, data historis saham dari Bank Central Asia (BBCA) dikumpulkan untuk dianalisis. Data diambil dari situs [Investing](https://www.investing.com/equities/bnk-central-as-historical-data), yang menyediakan informasi lengkap terkait pergerakan harga saham selama periode yang ditentukan. Proses pengumpulan data dilakukan dengan mengekspor data dalam bentuk file CSV. Data yang terkumpul mencakup rentang waktu mulai dari tahun 2015 hingga 2024, dengan total 2361 baris data yang mewakili tiap hari perdagangan selama periode tersebut.
 
-## Deskripsi Data
+### Deskripsi Data
 
 Data saham yang diambil memilik 7 fitur atau kolom, yaitu :
 
@@ -57,7 +57,7 @@ Data saham yang diambil memilik 7 fitur atau kolom, yaitu :
 - Vol.: Volume saham yang diperdagangkan selama hari tersebut.
 - Perubahan% : Persentase perubahan harga saham dibandingkan dengan hari perdagangan sebelumnya.
 
-## Exploratory Data Analysis (EDA)
+### Exploratory Data Analysis (EDA)
 
 ```{code-cell}
 import pandas as pd
@@ -110,9 +110,9 @@ for i, col in enumerate(features):
 plt.show()
 ```
 
-# Data Prepocessing
+## Data Prepocessing
 
-## Null Value
+### Null Value
 
 ```{code-cell}
 df.isnull().sum()

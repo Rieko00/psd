@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Laporan Proyek
+# Laporan PSD
 
 ## Pendahuluan
 
@@ -116,4 +116,5 @@ plt.show()
 
 ```{code-cell}
 df.isnull().sum()
+
 ```

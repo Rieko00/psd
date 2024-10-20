@@ -781,12 +781,12 @@ y_test shape: (280, 1)
 </section>
 <section id="modelling">
 <h2>Modelling<a class="headerlink" href="#modelling" title="Link to this heading">#</a></h2>
-<section id="bagging-linear-regression">
-<h3>Bagging Linear Regression<a class="headerlink" href="#bagging-linear-regression" title="Link to this heading">#</a></h3>
 <p>Pengukuran Akurasi</p>
 <p><span class="math notranslate nohighlight">\(MSE = mean((predicted - actual)^2)\)</span></p>
 <p><span class="math notranslate nohighlight">\(RMSE = sqrt(mean((predicted - actual)^2))\)</span></p>
 <p><span class="math notranslate nohighlight">\(MAPE = 100 * mean(abs((predicted - actual) / actual))\)</span></p>
+<section id="bagging-linear-regression">
+<h3>Bagging Linear Regression<a class="headerlink" href="#bagging-linear-regression" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -880,9 +880,11 @@ Prediksi Harga BMRI Besok: 6916.001383650782 (-1.55%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.0004543785702391568
-Root Mean Squared Error: 0.021316157492361442
-Mean Absolute Percentage Error (MAPE): 2.350210879700995 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.0004519290899065555
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 0.021258623894940976
+Mean Absolute Percentage Error (MAPE): 2.3403275187334898 %
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_bagging.py:581: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
@@ -907,7 +909,7 @@ Mean Absolute Percentage Error (MAPE): 2.350210879700995 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b93581037ba3b6f3ac03b8b2b18f7955c9f54239c66a3df50e512384ff5faa75.png" src="_images/b93581037ba3b6f3ac03b8b2b18f7955c9f54239c66a3df50e512384ff5faa75.png" />
+<img alt="_images/86b4677a9a54803f4eb500a043a9c9170e5aee0d85755d4a8bf46b36fdcc69eb.png" src="_images/86b4677a9a54803f4eb500a043a9c9170e5aee0d85755d4a8bf46b36fdcc69eb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -929,7 +931,7 @@ Mean Absolute Percentage Error (MAPE): 2.350210879700995 %
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Harga BMRI Hari ini: 7025.0
-Prediksi Harga BMRI Besok: 6911.3827889455415 (-1.62%)
+Prediksi Harga BMRI Besok: 6914.063121887609 (-1.58%)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but BaggingRegressor was fitted with feature names
@@ -1041,13 +1043,13 @@ Prediksi Harga BMRI Besok: 6856.750398555171 (-2.40%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_bagging.py:581: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-  return column_or_1d(y, warn=True)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.001350347565019255
 Root Mean Squared Error: 0.03674707559819223
 Mean Absolute Percentage Error (MAPE): 4.826791117208925 %
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_bagging.py:581: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  return column_or_1d(y, warn=True)
 </pre></div>
 </div>
 </div>
@@ -1126,9 +1128,9 @@ Prediksi Harga BMRI Besok: 6830.980449593076 (-2.76%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error (MSE): 0.0013972725240330866
-Root Mean Squared Error (RMSE): 0.037380108668021376
-Mean Absolute Percentage Error (MAPE): 4.285835851399139 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error (MSE): 0.0013117830614359078
+Root Mean Squared Error (RMSE): 0.036218545821663076
+Mean Absolute Percentage Error (MAPE): 4.161391702342703 %
 </pre></div>
 </div>
 </div>
@@ -1149,7 +1151,7 @@ Mean Absolute Percentage Error (MAPE): 4.285835851399139 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/eb2bc2763c3258ff7918b5b1295f79e7a64ee358b79316903565852304d02020.png" src="_images/eb2bc2763c3258ff7918b5b1295f79e7a64ee358b79316903565852304d02020.png" />
+<img alt="_images/5f4bc1717df937b9789765a22aafadc9783dc0425574f6b487adda8dbce916f3.png" src="_images/5f4bc1717df937b9789765a22aafadc9783dc0425574f6b487adda8dbce916f3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1319,9 +1321,9 @@ Prediksi Harga BMRI Besok: 6999.749999999999 (-0.36%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;estimator&#39;: 10, &#39;bootstrap&#39;: True, &#39;train_sample&#39;: 0.7, &#39;max_sample&#39;: 0.8, &#39;lag&#39;: [1, 2, 3]}
-Best RMSE: 0.019290733580229022
-Best Model: BaggingRegressor(estimator=LinearRegression(), max_samples=0.8)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;estimator&#39;: 20, &#39;bootstrap&#39;: True, &#39;train_sample&#39;: 0.7, &#39;max_sample&#39;: 1.0, &#39;lag&#39;: [1, 2, 3, 4, 5]}
+Best RMSE: 0.019320184576510347
+Best Model: BaggingRegressor(estimator=LinearRegression(), n_estimators=20)
 </pre></div>
 </div>
 </div>
@@ -1352,9 +1354,9 @@ Best Model: BaggingRegressor(estimator=LinearRegression(), max_samples=0.8)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.0003734898432087372
-Root Mean Squared Error: 0.019325885315005294
-Mean Absolute Percentage Error (MAPE): 2.406531094754552 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.00037820026079143156
+Root Mean Squared Error: 0.01944737156510955
+Mean Absolute Percentage Error (MAPE): 2.424404908805224 %
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_bagging.py:581: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
@@ -1379,7 +1381,7 @@ Mean Absolute Percentage Error (MAPE): 2.406531094754552 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/64a922f39a8f8200185a376467ef12bf91f568467016ff70fc9ada940d98fc7a.png" src="_images/64a922f39a8f8200185a376467ef12bf91f568467016ff70fc9ada940d98fc7a.png" />
+<img alt="_images/d5e7eefa0dbe31b4b351a64746865ebe065954e8c99144eb6162824384df1190.png" src="_images/d5e7eefa0dbe31b4b351a64746865ebe065954e8c99144eb6162824384df1190.png" />
 </div>
 </div>
 </section>
@@ -1416,16 +1418,71 @@ Mean Absolute Percentage Error (MAPE): 2.406531094754552 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Harga BMRI Hari ini: Rp 7.025,00
-Prediksi harga BMRI Besok: Rp 7.014,54 (-0.15%)
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
   warnings.warn(
 C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
   warnings.warn(
 C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:493: UserWarning: X does not have valid feature names, but MinMaxScaler was fitted with feature names
   warnings.warn(
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">last_row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="n">open_1</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="n">open_2</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">([[</span><span class="n">open_3</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">last_row_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">last_row</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open-1&#39;</span><span class="p">,</span> <span class="s1">&#39;open-2&#39;</span><span class="p">,</span> <span class="s1">&#39;open-3&#39;</span><span class="p">])</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">predicted_value_normalized</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">last_row_df</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">predicted_value</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predicted_value_normalized</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">last_price</span> <span class="o">=</span> <span class="n">open_1</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\ensemble\_bagging.py:1278,</span> in <span class="ni">BaggingRegressor.predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span> <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1277</span> <span class="c1"># Check data</span>
+<span class="ne">-&gt; </span><span class="mi">1278</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1279</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1280</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1281</span>     <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1282</span>     <span class="n">force_all_finite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1283</span>     <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1284</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1286</span> <span class="c1"># Parallel loop</span>
+<span class="g g-Whitespace">   </span><span class="mi">1287</span> <span class="n">n_jobs</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">starts</span> <span class="o">=</span> <span class="n">_partition_estimators</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:608,</span> in <span class="ni">BaseEstimator._validate_data</span><span class="nt">(self, X, y, reset, validate_separately, cast_to_ndarray, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="k">def</span> <span class="nf">_validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="n">X</span><span class="o">=</span><span class="s2">&quot;no_validation&quot;</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="o">**</span><span class="n">check_params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Validate input data and set or check the `n_features_in_` attribute.</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span><span class="sd">         validated.</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">608</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_feature_names</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span>     <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_tags</span><span class="p">()[</span><span class="s2">&quot;requires_y&quot;</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>             <span class="sa">f</span><span class="s2">&quot;This </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> estimator &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span>             <span class="s2">&quot;requires y to be passed, but the target y is None.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>         <span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\sklearn\base.py:535,</span> in <span class="ni">BaseEstimator._check_feature_names</span><span class="nt">(self, X, reset)</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">missing_names</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unexpected_names</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="n">message</span> <span class="o">+=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span>         <span class="s2">&quot;Feature names must be in the same order as they were in fit.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">535</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: The feature names should match those that were passed during fit.
+<span class="n">Feature</span> <span class="n">names</span> <span class="n">seen</span> <span class="n">at</span> <span class="n">fit</span> <span class="n">time</span><span class="p">,</span> <span class="n">yet</span> <span class="n">now</span> <span class="n">missing</span><span class="p">:</span>
+<span class="o">-</span> <span class="nb">open</span><span class="o">-</span><span class="mi">4</span>
+<span class="o">-</span> <span class="nb">open</span><span class="o">-</span><span class="mi">5</span>
 </pre></div>
 </div>
 </div>

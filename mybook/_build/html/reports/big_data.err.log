@@ -1,0 +1,49 @@
+Traceback (most recent call last):
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\ariek\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# prompt: evaluasi skor dengan cv
+
+from sklearn.model_selection import cross_val_score
+
+# Create a Random Forest classifier
+rf_classifier = RandomForestClassifier(n_estimators=100,bootstrap=True, random_state=42)
+
+# Perform cross-validation
+cv_scores = cross_val_score(rf_classifier, X, y, cv=5)  # You can change cv to adjust the number of folds
+
+# Print the cross-validation scores
+print("Cross-validation scores:", cv_scores)
+
+# Print the average cross-validation score
+print("Average cross-validation score:", np.mean(cv_scores))
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[17], line 9[0m
+[0;32m      6[0m rf_classifier [38;5;241m=[39m RandomForestClassifier(n_estimators[38;5;241m=[39m[38;5;241m100[39m,bootstrap[38;5;241m=[39m[38;5;28;01mTrue[39;00m, random_state[38;5;241m=[39m[38;5;241m42[39m)
+[0;32m      8[0m [38;5;66;03m# Perform cross-validation[39;00m
+[1;32m----> 9[0m cv_scores [38;5;241m=[39m cross_val_score(rf_classifier, [43mX[49m, y, cv[38;5;241m=[39m[38;5;241m5[39m)  [38;5;66;03m# You can change cv to adjust the number of folds[39;00m
+[0;32m     11[0m [38;5;66;03m# Print the cross-validation scores[39;00m
+[0;32m     12[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mCross-validation scores:[39m[38;5;124m"[39m, cv_scores)
+
+[1;31mNameError[0m: name 'X' is not defined
+

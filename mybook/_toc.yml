@@ -4,9 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-  - file: PSD_UTS
-  - file: laporan
-  - file: file-laporan
+  - file: Saham_uni
+  - file: Saham_mult
   # - file: memahami-data
   # - file: preprocessing-data
 # - file: notebooks

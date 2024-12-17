@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
+  - file: predict_cuaca
   - file: Saham_uni
   - file: Saham_mult
   # - file: memahami-data

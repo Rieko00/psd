@@ -1,0 +1,2263 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project 1 Prediksi Cuaca Daerah Surabaya Multivariate &#8212; Proyek Sain Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'predict_cuaca';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project 2 Prediksi Saham Univariate" href="Saham_uni.html" />
+    <link rel="prev" title="Selamat datang" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sain Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sain Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Selamat datang
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project 1 Prediksi Cuaca Daerah Surabaya Multivariate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Saham_uni.html">Project 2 Prediksi Saham Univariate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Saham_mult.html">Project 3 Prediksi Saham Multivariate Multistep</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rieko00/psd" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rieko00/psd/issues/new?title=Issue%20on%20page%20%2Fpredict_cuaca.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/predict_cuaca.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Project 1 Prediksi Cuaca Daerah Surabaya Multivariate</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-library">Load Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info-data">Info Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-data-untuk-eda">Encoding Data Untuk EDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-data">Histogram Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation-matrix">Corelation Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepocessing">Prepocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-mapping">Label Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-feature">Select Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label">Encoding Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation-matrix-setelah-prepocessing">Corelation Matrix Setelah Prepocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-setiap-class">Jumlah Data Setiap Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-dengan-oversampling-smote">Balancing dengan Oversampling Smote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-setiap-class-setelah-balancing">Jumlah Data Setiap Class Setelah Balancing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-random-forest">Modelling dengan Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-data-tes">Confusion Matrix Data Tes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-score">Cross Validation Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-setiap-fold">Confusion Matrix Setiap Fold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-rf">Grid Search RF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-parameters">Best Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-1-prediksi-cuaca-daerah-surabaya-multivariate">
+<h1>Project 1 Prediksi Cuaca Daerah Surabaya Multivariate<a class="headerlink" href="#project-1-prediksi-cuaca-daerah-surabaya-multivariate" title="Link to this heading">#</a></h1>
+<section id="load-library">
+<h2>Load Library<a class="headerlink" href="#load-library" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eda">
+<h2>EDA<a class="headerlink" href="#eda" title="Link to this heading">#</a></h2>
+<section id="load-data">
+<h3>Load Data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sby.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sby.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\io\common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;sby.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="info-data">
+<h3>Info Data<a class="headerlink" href="#info-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 8784 entries, 0 to 8783
+Data columns (total 22 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   name              8784 non-null   object 
+ 1   datetime          8784 non-null   object 
+ 2   temp              8784 non-null   float64
+ 3   feelslike         8784 non-null   float64
+ 4   dew               8784 non-null   float64
+ 5   humidity          8784 non-null   float64
+ 6   precip            8784 non-null   float64
+ 7   precipprob        8784 non-null   int64  
+ 8   preciptype        1727 non-null   object 
+ 9   snow              8784 non-null   int64  
+ 10  snowdepth         8784 non-null   int64  
+ 11  windgust          8784 non-null   float64
+ 12  windspeed         8784 non-null   float64
+ 13  winddir           8784 non-null   float64
+ 14  sealevelpressure  8784 non-null   float64
+ 15  cloudcover        8784 non-null   float64
+ 16  visibility        8784 non-null   float64
+ 17  solarradiation    8784 non-null   int64  
+ 18  solarenergy       8784 non-null   float64
+ 19  uvindex           8784 non-null   int64  
+ 20  severerisk        8784 non-null   int64  
+ 21  conditions        8784 non-null   object 
+dtypes: float64(12), int64(6), object(4)
+memory usage: 1.5+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encoding-data-untuk-eda">
+<h3>Encoding Data Untuk EDA<a class="headerlink" href="#encoding-data-untuk-eda" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eda_encoded</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">eda_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">encoderd_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;preciptype&#39;</span><span class="p">,</span> <span class="s1">&#39;conditions&#39;</span><span class="p">,]</span>
+
+<span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">encoderd_cols</span><span class="p">:</span>
+    <span class="n">eda_encoded</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+
+<span class="n">eda_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">eda_encoded</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">eda_encoded</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 8784 entries, 0 to 8783
+Data columns (total 20 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   temp              8784 non-null   float64
+ 1   feelslike         8784 non-null   float64
+ 2   dew               8784 non-null   float64
+ 3   humidity          8784 non-null   float64
+ 4   precip            8784 non-null   float64
+ 5   precipprob        8784 non-null   int64  
+ 6   preciptype        8784 non-null   int32  
+ 7   snow              8784 non-null   int64  
+ 8   snowdepth         8784 non-null   int64  
+ 9   windgust          8784 non-null   float64
+ 10  windspeed         8784 non-null   float64
+ 11  winddir           8784 non-null   float64
+ 12  sealevelpressure  8784 non-null   float64
+ 13  cloudcover        8784 non-null   float64
+ 14  visibility        8784 non-null   float64
+ 15  solarradiation    8784 non-null   int64  
+ 16  solarenergy       8784 non-null   float64
+ 17  uvindex           8784 non-null   int64  
+ 18  severerisk        8784 non-null   int64  
+ 19  conditions        8784 non-null   int32  
+dtypes: float64(12), int32(2), int64(6)
+memory usage: 1.3 MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram-data">
+<h3>Histogram Data<a class="headerlink" href="#histogram-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eda_encoded</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;temp&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;feelslike&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;dew&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;humidity&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;precip&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;precipprob&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;preciptype&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;snow&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;snowdepth&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;windgust&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;windspeed&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;winddir&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;sealevelpressure&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;cloudcover&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;visibility&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;solarradiation&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;solarenergy&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;uvindex&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;severerisk&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;conditions&#39;}&gt;]], dtype=object)
+</pre></div>
+</div>
+<img alt="_images/cc7ae64294dfb491f454879670b410f7c848a385d8d284057a8e743a9990e21e.png" src="_images/cc7ae64294dfb491f454879670b410f7c848a385d8d284057a8e743a9990e21e.png" />
+</div>
+</div>
+</section>
+<section id="corelation-matrix">
+<h3>Corelation Matrix<a class="headerlink" href="#corelation-matrix" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">eda_encoded</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8fa483b554f9dbb67eaab87dcd9d0921aed40f2e3fd4759e2d1b293f12408456.png" src="_images/8fa483b554f9dbb67eaab87dcd9d0921aed40f2e3fd4759e2d1b293f12408456.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="prepocessing">
+<h2>Prepocessing<a class="headerlink" href="#prepocessing" title="Link to this heading">#</a></h2>
+<section id="label-mapping">
+<h3>Label Mapping<a class="headerlink" href="#label-mapping" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Partially cloudy&#39;</span><span class="p">:</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rain, Partially cloudy&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Overcast&#39;</span><span class="p">:</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rain, Overcast&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Clear&#39;</span><span class="p">:</span> <span class="s1">&#39;Clear&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rain&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span>
+<span class="p">}</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_mapping</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Cloudy&#39;, &#39;Rain&#39;, &#39;Clear&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Cloudy&#39;, &#39;Rain&#39;, &#39;Clear&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-feature">
+<h3>Select Feature<a class="headerlink" href="#select-feature" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;snowdepth&#39;</span><span class="p">,</span> <span class="s1">&#39;snow&#39;</span><span class="p">,</span> <span class="s1">&#39;preciptype&#39;</span><span class="p">,</span> <span class="s1">&#39;precipprob&#39;</span><span class="p">,</span> <span class="s1">&#39;precip&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;severerisk&#39;</span><span class="p">,</span> <span class="s1">&#39;uvindex&#39;</span><span class="p">,</span> <span class="s1">&#39;solarradiation&#39;</span><span class="p">,</span> <span class="s1">&#39;solarenergy&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;sealevelpressure&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>feelslike</th>
+      <th>dew</th>
+      <th>humidity</th>
+      <th>windgust</th>
+      <th>windspeed</th>
+      <th>winddir</th>
+      <th>cloudcover</th>
+      <th>visibility</th>
+      <th>conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>27.0</td>
+      <td>30.6</td>
+      <td>25.0</td>
+      <td>88.84</td>
+      <td>11.9</td>
+      <td>9.4</td>
+      <td>270.0</td>
+      <td>50.0</td>
+      <td>7.0</td>
+      <td>Cloudy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27.9</td>
+      <td>32.0</td>
+      <td>24.4</td>
+      <td>81.40</td>
+      <td>6.1</td>
+      <td>3.6</td>
+      <td>258.0</td>
+      <td>75.9</td>
+      <td>7.1</td>
+      <td>Cloudy</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>27.0</td>
+      <td>31.2</td>
+      <td>26.0</td>
+      <td>94.27</td>
+      <td>2.5</td>
+      <td>13.0</td>
+      <td>70.0</td>
+      <td>50.0</td>
+      <td>3.0</td>
+      <td>Cloudy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27.0</td>
+      <td>31.2</td>
+      <td>26.0</td>
+      <td>94.27</td>
+      <td>5.4</td>
+      <td>3.6</td>
+      <td>80.0</td>
+      <td>50.0</td>
+      <td>5.0</td>
+      <td>Cloudy</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27.2</td>
+      <td>31.9</td>
+      <td>26.1</td>
+      <td>93.51</td>
+      <td>7.2</td>
+      <td>0.4</td>
+      <td>320.0</td>
+      <td>82.9</td>
+      <td>7.4</td>
+      <td>Rain</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>8779</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>6.1</td>
+      <td>7.6</td>
+      <td>290.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>Rain</td>
+    </tr>
+    <tr>
+      <th>8780</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>7.2</td>
+      <td>9.4</td>
+      <td>290.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>Cloudy</td>
+    </tr>
+    <tr>
+      <th>8781</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>7.2</td>
+      <td>7.6</td>
+      <td>310.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>Rain</td>
+    </tr>
+    <tr>
+      <th>8782</th>
+      <td>26.0</td>
+      <td>26.0</td>
+      <td>24.0</td>
+      <td>88.75</td>
+      <td>6.8</td>
+      <td>9.4</td>
+      <td>270.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>Rain</td>
+    </tr>
+    <tr>
+      <th>8783</th>
+      <td>26.0</td>
+      <td>26.0</td>
+      <td>24.0</td>
+      <td>88.75</td>
+      <td>5.4</td>
+      <td>5.4</td>
+      <td>280.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>Cloudy</td>
+    </tr>
+  </tbody>
+</table>
+<p>8784 rows × 10 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="encoding-label">
+<h3>Encoding Label<a class="headerlink" href="#encoding-label" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_encoder_new</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder_new</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">])</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>feelslike</th>
+      <th>dew</th>
+      <th>humidity</th>
+      <th>windgust</th>
+      <th>windspeed</th>
+      <th>winddir</th>
+      <th>cloudcover</th>
+      <th>visibility</th>
+      <th>conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>27.0</td>
+      <td>30.6</td>
+      <td>25.0</td>
+      <td>88.84</td>
+      <td>11.9</td>
+      <td>9.4</td>
+      <td>270.0</td>
+      <td>50.0</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27.9</td>
+      <td>32.0</td>
+      <td>24.4</td>
+      <td>81.40</td>
+      <td>6.1</td>
+      <td>3.6</td>
+      <td>258.0</td>
+      <td>75.9</td>
+      <td>7.1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>27.0</td>
+      <td>31.2</td>
+      <td>26.0</td>
+      <td>94.27</td>
+      <td>2.5</td>
+      <td>13.0</td>
+      <td>70.0</td>
+      <td>50.0</td>
+      <td>3.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27.0</td>
+      <td>31.2</td>
+      <td>26.0</td>
+      <td>94.27</td>
+      <td>5.4</td>
+      <td>3.6</td>
+      <td>80.0</td>
+      <td>50.0</td>
+      <td>5.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27.2</td>
+      <td>31.9</td>
+      <td>26.1</td>
+      <td>93.51</td>
+      <td>7.2</td>
+      <td>0.4</td>
+      <td>320.0</td>
+      <td>82.9</td>
+      <td>7.4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>8779</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>6.1</td>
+      <td>7.6</td>
+      <td>290.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8780</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>7.2</td>
+      <td>9.4</td>
+      <td>290.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8781</th>
+      <td>27.0</td>
+      <td>30.0</td>
+      <td>24.0</td>
+      <td>83.67</td>
+      <td>7.2</td>
+      <td>7.6</td>
+      <td>310.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8782</th>
+      <td>26.0</td>
+      <td>26.0</td>
+      <td>24.0</td>
+      <td>88.75</td>
+      <td>6.8</td>
+      <td>9.4</td>
+      <td>270.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>8783</th>
+      <td>26.0</td>
+      <td>26.0</td>
+      <td>24.0</td>
+      <td>88.75</td>
+      <td>5.4</td>
+      <td>5.4</td>
+      <td>280.0</td>
+      <td>25.0</td>
+      <td>8.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>8784 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># joblib.dump(label_encoder_new, &#39;label_encoder.pkl&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;label_encoder.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="corelation-matrix-setelah-prepocessing">
+<h3>Corelation Matrix Setelah Prepocessing<a class="headerlink" href="#corelation-matrix-setelah-prepocessing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4b0a159e8ddf633a8516ef6e58e70b88ce171c8c58366bfd79c1f450c309835.png" src="_images/d4b0a159e8ddf633a8516ef6e58e70b88ce171c8c58366bfd79c1f450c309835.png" />
+</div>
+</div>
+</section>
+<section id="jumlah-data-setiap-class">
+<h3>Jumlah Data Setiap Class<a class="headerlink" href="#jumlah-data-setiap-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">],</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span><span class="p">))</span>
+<span class="n">label_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 340, 1: 7575, 2: 869}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="split-data">
+<h3>Split Data<a class="headerlink" href="#split-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xdata</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;conditions&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">Xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">ydata</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train shape:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_test shape:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train shape:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test shape:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train shape: (7027, 9)
+X_test shape: (1757, 9)
+y_train shape: (7027,)
+y_test shape: (1757,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="balancing-dengan-oversampling-smote">
+<h3>Balancing dengan Oversampling Smote<a class="headerlink" href="#balancing-dengan-oversampling-smote" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="jumlah-data-setiap-class-setelah-balancing">
+<h3>Jumlah Data Setiap Class Setelah Balancing<a class="headerlink" href="#jumlah-data-setiap-class-setelah-balancing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sebelum  = &#39;</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span><span class="p">)))</span>
+
+<span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sesudah = &#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_labels</span><span class="p">,</span> <span class="n">counts</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebelum  =  {0: 272, 1: 6060, 2: 695}
+Sesudah =  {0: 6060, 1: 6060, 2: 6060}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modelling">
+<h2>Modelling<a class="headerlink" href="#modelling" title="Link to this heading">#</a></h2>
+<section id="modelling-dengan-random-forest">
+<h3>Modelling dengan Random Forest<a class="headerlink" href="#modelling-dengan-random-forest" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.8821855435401252
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99        68
+           1       0.92      0.95      0.93      1515
+           2       0.37      0.26      0.30       174
+
+    accuracy                           0.88      1757
+   macro avg       0.76      0.74      0.74      1757
+weighted avg       0.87      0.88      0.87      1757
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="confusion-matrix-data-tes">
+<h3>Confusion Matrix Data Tes<a class="headerlink" href="#confusion-matrix-data-tes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2ef36c8ac1f90598b86de9932ef21f778a88c5328c7c7f87701bef79e48bebe7.png" src="_images/2ef36c8ac1f90598b86de9932ef21f778a88c5328c7c7f87701bef79e48bebe7.png" />
+</div>
+</div>
+</section>
+<section id="cross-validation-score">
+<h3>Cross Validation Score<a class="headerlink" href="#cross-validation-score" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf_classifier</span><span class="p">,</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross Validation Score:&quot;</span><span class="p">,</span> <span class="n">cv_score</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average cross-validation score:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Validation Score: [0.87293729 0.96974697 0.97194719 0.96369637 0.96864686]
+Average cross-validation score: 0.9493949394939494
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="confusion-matrix-setiap-fold">
+<h3>Confusion Matrix Setiap Fold<a class="headerlink" href="#confusion-matrix-setiap-fold" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+
+<span class="n">y_pred_cv</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">rf_classifier</span><span class="p">,</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">cm_cv</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_resampled</span><span class="p">,</span> <span class="n">y_pred_cv</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_cv</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Save the model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a20894677e327ef355bdab0ca9fa085a273f0bd6da5452e70fce0db513e66471.png" src="_images/a20894677e327ef355bdab0ca9fa085a273f0bd6da5452e70fce0db513e66471.png" />
+</div>
+</div>
+</section>
+<section id="grid-search-rf">
+<h3>Grid Search RF<a class="headerlink" href="#grid-search-rf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from sklearn.model_selection import GridSearchCV</span>
+
+<span class="c1"># param_grid = {</span>
+<span class="c1">#     &#39;n_estimators&#39;: [100, 200, 300],</span>
+<span class="c1">#     &#39;max_depth&#39;: [10, 20, 30],</span>
+<span class="c1">#     &#39;min_samples_split&#39;: [2, 5, 10],</span>
+<span class="c1">#     &#39;min_samples_leaf&#39;: [1, 2, 4]</span>
+<span class="c1"># }</span>
+
+<span class="c1"># grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, cv=5, n_jobs=-1, verbose=2)</span>
+<span class="c1"># grid_search.fit(X_resampled, y_resampled)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 81 candidates, totalling 405 fits
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=5, estimator=RandomForestClassifier(random_state=42), n_jobs=-1,
+             param_grid={&#x27;max_depth&#x27;: [10, 20, 30],
+                         &#x27;min_samples_leaf&#x27;: [1, 2, 4],
+                         &#x27;min_samples_split&#x27;: [2, 5, 10],
+                         &#x27;n_estimators&#x27;: [100, 200, 300]},
+             verbose=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=5, estimator=RandomForestClassifier(random_state=42), n_jobs=-1,
+             param_grid={&#x27;max_depth&#x27;: [10, 20, 30],
+                         &#x27;min_samples_leaf&#x27;: [1, 2, 4],
+                         &#x27;min_samples_split&#x27;: [2, 5, 10],
+                         &#x27;n_estimators&#x27;: [100, 200, 300]},
+             verbose=2)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">best_estimator_: RandomForestClassifier</label><div class="sk-toggleable__content fitted"><pre>RandomForestClassifier(max_depth=30, n_estimators=300, random_state=42)</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;RandomForestClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.ensemble.RandomForestClassifier.html">?<span>Documentation for RandomForestClassifier</span></a></label><div class="sk-toggleable__content fitted"><pre>RandomForestClassifier(max_depth=30, n_estimators=300, random_state=42)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
+</div>
+</section>
+<section id="best-parameters">
+<h3>Best Parameters<a class="headerlink" href="#best-parameters" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(&quot;Best Parameters:&quot;, grid_search.best_params_)</span>
+<span class="c1"># print(&quot;Best Score:&quot;, grid_search.best_score_)</span>
+
+<span class="c1"># best_model = grid_search.best_estimator_</span>
+<span class="c1"># y_pred = best_model.predict(X_test)</span>
+<span class="c1"># print(&quot;Test Accuracy:&quot;, accuracy_score(y_test, y_pred))</span>
+<span class="c1"># print(classification_report(y_test, y_pred))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Parameters: {&#39;max_depth&#39;: 30, &#39;min_samples_leaf&#39;: 1, &#39;min_samples_split&#39;: 2, &#39;n_estimators&#39;: 300}
+Best Score: 0.9502200220022002
+Test Accuracy: 0.8821855435401252
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99        68
+           1       0.92      0.95      0.93      1515
+           2       0.37      0.26      0.30       174
+
+    accuracy                           0.88      1757
+   macro avg       0.76      0.74      0.74      1757
+weighted avg       0.87      0.88      0.87      1757
+</pre></div>
+</div>
+</div>
+</div>
+<p>Best Parameters: {‘max_depth’: 30, ‘min_samples_leaf’: 1, ‘min_samples_split’: 2, ‘n_estimators’: 300}
+Best Score: 0.9502200220022002
+Test Accuracy: 0.8821855435401252
+precision    recall  f1-score   support</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       0       0.99      1.00      0.99        68
+       1       0.92      0.95      0.93      1515
+       2       0.37      0.26      0.30       174
+
+accuracy                           0.88      1757
+</pre></div>
+</div>
+<p>macro avg       0.76      0.74      0.74      1757
+weighted avg       0.87      0.88      0.87      1757</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross Validation Score:&quot;</span><span class="p">,</span> <span class="n">cv_score</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average cross-validation score:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Validation Score: [0.87623762 0.96864686 0.97277228 0.96507151 0.96837184]
+Average cross-validation score: 0.9502200220022002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder_new</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2ef36c8ac1f90598b86de9932ef21f778a88c5328c7c7f87701bef79e48bebe7.png" src="_images/2ef36c8ac1f90598b86de9932ef21f778a88c5328c7c7f87701bef79e48bebe7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># joblib.dump(best_model, &#39;model_rf.pkl&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;model_rf.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">api</span> <span class="o">=</span> <span class="s1">&#39;https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Surabaya,ID/today?unitGroup=metric&amp;include=hours&amp;key=AQCL3EG5SNW9XDN44A67J95UB&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+	
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;queryCost&#39;: 1, &#39;latitude&#39;: -7.26309, &#39;longitude&#39;: 112.731, &#39;resolvedAddress&#39;: &#39;Surabaya, Indonesia&#39;, &#39;address&#39;: &#39;Surabaya,ID&#39;, &#39;timezone&#39;: &#39;Asia/Jakarta&#39;, &#39;tzoffset&#39;: 7.0, &#39;days&#39;: [{&#39;datetime&#39;: &#39;2024-12-03&#39;, &#39;datetimeEpoch&#39;: 1733158800, &#39;tempmax&#39;: 33.0, &#39;tempmin&#39;: 24.0, &#39;temp&#39;: 28.6, &#39;feelslikemax&#39;: 35.8, &#39;feelslikemin&#39;: 24.0, &#39;feelslike&#39;: 30.8, &#39;dew&#39;: 22.6, &#39;humidity&#39;: 71.8, &#39;precip&#39;: 6.3, &#39;precipprob&#39;: 100.0, &#39;precipcover&#39;: 33.33, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 9.4, &#39;winddir&#39;: 88.4, &#39;pressure&#39;: 1007.1, &#39;cloudcover&#39;: 86.1, &#39;visibility&#39;: 17.1, &#39;solarradiation&#39;: 259.9, &#39;solarenergy&#39;: 22.5, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;sunrise&#39;: &#39;05:03:29&#39;, &#39;sunriseEpoch&#39;: 1733177009, &#39;sunset&#39;: &#39;17:34:34&#39;, &#39;sunsetEpoch&#39;: 1733222074, &#39;moonphase&#39;: 0.07, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;description&#39;: &#39;Partly cloudy throughout the day with rain.&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: [&#39;WARR&#39;, &#39;remote&#39;], &#39;source&#39;: &#39;comb&#39;, &#39;hours&#39;: [{&#39;datetime&#39;: &#39;00:00:00&#39;, &#39;datetimeEpoch&#39;: 1733158800, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 94.19, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 3.6, &#39;winddir&#39;: 241.2, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 7.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;01:00:00&#39;, &#39;datetimeEpoch&#39;: 1733162400, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 25.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 3.6, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 290.0, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 4.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;02:00:00&#39;, &#39;datetimeEpoch&#39;: 1733166000, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 94.19, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 240.0, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 5.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;03:00:00&#39;, &#39;datetimeEpoch&#39;: 1733169600, &#39;temp&#39;: 24.0, &#39;feelslike&#39;: 24.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.1, &#39;precipprob&#39;: 100.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 250.0, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 5.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;04:00:00&#39;, &#39;datetimeEpoch&#39;: 1733173200, &#39;temp&#39;: 25.7, &#39;feelslike&#39;: 25.7, &#39;humidity&#39;: 84.03, &#39;dew&#39;: 22.8, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 3.2, &#39;winddir&#39;: 159.2, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: [&#39;remote&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;05:00:00&#39;, &#39;datetimeEpoch&#39;: 1733176800, &#39;temp&#39;: 25.9, &#39;feelslike&#39;: 25.9, &#39;humidity&#39;: 83.04, &#39;dew&#39;: 22.8, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 6.5, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 3.2, &#39;windspeed&#39;: 2.9, &#39;winddir&#39;: 165.2, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;06:00:00&#39;, &#39;datetimeEpoch&#39;: 1733180400, &#39;temp&#39;: 26.5, &#39;feelslike&#39;: 26.5, &#39;humidity&#39;: 80.64, &#39;dew&#39;: 22.9, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 6.5, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 6.8, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 159.5, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 40.0, &#39;solarenergy&#39;: 0.1, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;07:00:00&#39;, &#39;datetimeEpoch&#39;: 1733184000, &#39;temp&#39;: 27.8, &#39;feelslike&#39;: 30.4, &#39;humidity&#39;: 71.6, &#39;dew&#39;: 22.2, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 6.5, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 6.8, &#39;winddir&#39;: 147.6, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 210.0, &#39;solarenergy&#39;: 0.8, &#39;uvindex&#39;: 2.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;08:00:00&#39;, &#39;datetimeEpoch&#39;: 1733187600, &#39;temp&#39;: 29.0, &#39;feelslike&#39;: 31.6, &#39;humidity&#39;: 63.98, &#39;dew&#39;: 21.5, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 155.4, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 417.0, &#39;solarenergy&#39;: 1.5, &#39;uvindex&#39;: 4.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;09:00:00&#39;, &#39;datetimeEpoch&#39;: 1733191200, &#39;temp&#39;: 30.3, &#39;feelslike&#39;: 32.9, &#39;humidity&#39;: 57.92, &#39;dew&#39;: 21.1, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 7.2, &#39;windspeed&#39;: 6.5, &#39;winddir&#39;: 159.2, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 83.4, &#39;solarradiation&#39;: 632.0, &#39;solarenergy&#39;: 2.3, &#39;uvindex&#39;: 6.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-day&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;10:00:00&#39;, &#39;datetimeEpoch&#39;: 1733194800, &#39;temp&#39;: 31.6, &#39;feelslike&#39;: 34.4, &#39;humidity&#39;: 53.78, &#39;dew&#39;: 21.1, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 6.1, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 139.7, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 828.0, &#39;solarenergy&#39;: 3.0, &#39;uvindex&#39;: 8.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;11:00:00&#39;, &#39;datetimeEpoch&#39;: 1733198400, &#39;temp&#39;: 32.7, &#39;feelslike&#39;: 35.7, &#39;humidity&#39;: 50.23, &#39;dew&#39;: 21.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 113.4, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 916.0, &#39;solarenergy&#39;: 3.3, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;12:00:00&#39;, &#39;datetimeEpoch&#39;: 1733202000, &#39;temp&#39;: 33.0, &#39;feelslike&#39;: 35.8, &#39;humidity&#39;: 48.78, &#39;dew&#39;: 20.8, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 4.7, &#39;winddir&#39;: 74.9, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 896.0, &#39;solarenergy&#39;: 3.2, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;13:00:00&#39;, &#39;datetimeEpoch&#39;: 1733205600, &#39;temp&#39;: 32.9, &#39;feelslike&#39;: 35.6, &#39;humidity&#39;: 48.76, &#39;dew&#39;: 20.7, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.8, &#39;windspeed&#39;: 7.2, &#39;winddir&#39;: 50.2, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 791.0, &#39;solarenergy&#39;: 2.8, &#39;uvindex&#39;: 8.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;14:00:00&#39;, &#39;datetimeEpoch&#39;: 1733209200, &#39;temp&#39;: 32.6, &#39;feelslike&#39;: 35.3, &#39;humidity&#39;: 49.59, &#39;dew&#39;: 20.7, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 9.0, &#39;winddir&#39;: 51.3, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 633.0, &#39;solarenergy&#39;: 2.3, &#39;uvindex&#39;: 6.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;15:00:00&#39;, &#39;datetimeEpoch&#39;: 1733212800, &#39;temp&#39;: 32.0, &#39;feelslike&#39;: 34.7, &#39;humidity&#39;: 51.93, &#39;dew&#39;: 20.9, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 9.4, &#39;winddir&#39;: 50.4, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 437.0, &#39;solarenergy&#39;: 1.6, &#39;uvindex&#39;: 4.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;16:00:00&#39;, &#39;datetimeEpoch&#39;: 1733216400, &#39;temp&#39;: 31.5, &#39;feelslike&#39;: 34.6, &#39;humidity&#39;: 55.43, &#39;dew&#39;: 21.5, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 43.3, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 22.7, &#39;cloudcover&#39;: 98.0, &#39;solarradiation&#39;: 312.0, &#39;solarenergy&#39;: 1.1, &#39;uvindex&#39;: 3.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;17:00:00&#39;, &#39;datetimeEpoch&#39;: 1733220000, &#39;temp&#39;: 30.4, &#39;feelslike&#39;: 34.0, &#39;humidity&#39;: 62.36, &#39;dew&#39;: 22.4, &#39;precip&#39;: 0.2, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 9.4, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 36.8, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 22.9, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 126.0, &#39;solarenergy&#39;: 0.5, &#39;uvindex&#39;: 1.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;18:00:00&#39;, &#39;datetimeEpoch&#39;: 1733223600, &#39;temp&#39;: 28.8, &#39;feelslike&#39;: 32.5, &#39;humidity&#39;: 71.78, &#39;dew&#39;: 23.2, &#39;precip&#39;: 0.6, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 9.4, &#39;windspeed&#39;: 6.5, &#39;winddir&#39;: 37.2, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 12.5, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;19:00:00&#39;, &#39;datetimeEpoch&#39;: 1733227200, &#39;temp&#39;: 28.0, &#39;feelslike&#39;: 31.6, &#39;humidity&#39;: 77.5, &#39;dew&#39;: 23.7, &#39;precip&#39;: 1.7, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.8, &#39;windspeed&#39;: 5.8, &#39;winddir&#39;: 48.8, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 6.5, &#39;cloudcover&#39;: 86.1, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;20:00:00&#39;, &#39;datetimeEpoch&#39;: 1733230800, &#39;temp&#39;: 27.6, &#39;feelslike&#39;: 31.0, &#39;humidity&#39;: 79.81, &#39;dew&#39;: 23.8, &#39;precip&#39;: 1.5, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 71.7, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 6.7, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;21:00:00&#39;, &#39;datetimeEpoch&#39;: 1733234400, &#39;temp&#39;: 27.5, &#39;feelslike&#39;: 30.8, &#39;humidity&#39;: 80.28, &#39;dew&#39;: 23.8, &#39;precip&#39;: 0.8, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 4.3, &#39;windspeed&#39;: 3.2, &#39;winddir&#39;: 56.8, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 7.8, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;22:00:00&#39;, &#39;datetimeEpoch&#39;: 1733238000, &#39;temp&#39;: 27.1, &#39;feelslike&#39;: 30.0, &#39;humidity&#39;: 81.69, &#39;dew&#39;: 23.7, &#39;precip&#39;: 0.9, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 4.3, &#39;winddir&#39;: 93.5, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 8.0, &#39;cloudcover&#39;: 98.8, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;23:00:00&#39;, &#39;datetimeEpoch&#39;: 1733241600, &#39;temp&#39;: 27.1, &#39;feelslike&#39;: 30.0, &#39;humidity&#39;: 81.2, &#39;dew&#39;: 23.6, &#39;precip&#39;: 0.5, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 2.5, &#39;windspeed&#39;: 1.8, &#39;winddir&#39;: 93.8, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 13.9, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}]}], &#39;stations&#39;: {&#39;WARR&#39;: {&#39;distance&#39;: 14094.0, &#39;latitude&#39;: -7.38, &#39;longitude&#39;: 112.78, &#39;useCount&#39;: 0, &#39;id&#39;: &#39;WARR&#39;, &#39;name&#39;: &#39;WARR&#39;, &#39;quality&#39;: 49, &#39;contribution&#39;: 0.0}}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_hour</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">hour</span> <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;days&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hours&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">hour</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;03:00:00&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">df_tes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">selected_hour</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df_tes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;snowdepth&#39;</span><span class="p">,</span> <span class="s1">&#39;snow&#39;</span><span class="p">,</span> <span class="s1">&#39;preciptype&#39;</span><span class="p">,</span> <span class="s1">&#39;precipprob&#39;</span><span class="p">,</span> <span class="s1">&#39;precip&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;icon&#39;</span><span class="p">,</span> <span class="s1">&#39;stations&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;datetimeEpoch&#39;</span><span class="p">,</span> <span class="s1">&#39;solarradiation&#39;</span><span class="p">,</span> <span class="s1">&#39;solarenergy&#39;</span><span class="p">,</span> <span class="s1">&#39;uvindex&#39;</span> <span class="p">,</span> <span class="s1">&#39;severerisk&#39;</span><span class="p">,</span> <span class="s1">&#39;pressure&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>feelslike</th>
+      <th>humidity</th>
+      <th>dew</th>
+      <th>windgust</th>
+      <th>windspeed</th>
+      <th>winddir</th>
+      <th>visibility</th>
+      <th>cloudcover</th>
+      <th>conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24.0</td>
+      <td>24.0</td>
+      <td>100.0</td>
+      <td>24.0</td>
+      <td>5.0</td>
+      <td>7.6</td>
+      <td>250.0</td>
+      <td>5.0</td>
+      <td>25.0</td>
+      <td>Rain, Partially cloudy</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure the label_mapping dictionary is available</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">&#39;Partially cloudy&#39;</span><span class="p">:</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;Rain, Partially cloudy&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;Overcast&#39;</span><span class="p">:</span> <span class="s1">&#39;Cloudy&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;Rain, Overcast&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;Clear&#39;</span><span class="p">:</span> <span class="s1">&#39;Clear&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;Rain&#39;</span><span class="p">:</span> <span class="s1">&#39;Rain&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Mengganti label pada kolom &#39;conditions&#39;</span>
+<span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_mapping</span><span class="p">)</span>
+
+<span class="n">df_tes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>feelslike</th>
+      <th>humidity</th>
+      <th>dew</th>
+      <th>windgust</th>
+      <th>windspeed</th>
+      <th>winddir</th>
+      <th>visibility</th>
+      <th>cloudcover</th>
+      <th>conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24.0</td>
+      <td>24.0</td>
+      <td>100.0</td>
+      <td>24.0</td>
+      <td>5.0</td>
+      <td>7.6</td>
+      <td>250.0</td>
+      <td>5.0</td>
+      <td>25.0</td>
+      <td>Rain</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># encode the labels</span>
+<span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder_new</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">])</span>
+<span class="n">df_tes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temp</th>
+      <th>feelslike</th>
+      <th>humidity</th>
+      <th>dew</th>
+      <th>windgust</th>
+      <th>windspeed</th>
+      <th>winddir</th>
+      <th>visibility</th>
+      <th>cloudcover</th>
+      <th>conditions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24.0</td>
+      <td>24.0</td>
+      <td>100.0</td>
+      <td>24.0</td>
+      <td>5.0</td>
+      <td>7.6</td>
+      <td>250.0</td>
+      <td>5.0</td>
+      <td>25.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">api</span> <span class="o">=</span> <span class="s1">&#39;https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Surabaya,ID/today?unitGroup=metric&amp;include=hours&amp;key=AQCL3EG5SNW9XDN44A67J95UB&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+	<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+	
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;queryCost&#39;: 1, &#39;latitude&#39;: -7.26309, &#39;longitude&#39;: 112.731, &#39;resolvedAddress&#39;: &#39;Surabaya, Indonesia&#39;, &#39;address&#39;: &#39;Surabaya,ID&#39;, &#39;timezone&#39;: &#39;Asia/Jakarta&#39;, &#39;tzoffset&#39;: 7.0, &#39;days&#39;: [{&#39;datetime&#39;: &#39;2024-12-03&#39;, &#39;datetimeEpoch&#39;: 1733158800, &#39;tempmax&#39;: 33.0, &#39;tempmin&#39;: 24.0, &#39;temp&#39;: 28.5, &#39;feelslikemax&#39;: 35.8, &#39;feelslikemin&#39;: 24.0, &#39;feelslike&#39;: 30.6, &#39;dew&#39;: 22.7, &#39;humidity&#39;: 73.2, &#39;precip&#39;: 6.3, &#39;precipprob&#39;: 100.0, &#39;precipcover&#39;: 33.33, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 9.4, &#39;winddir&#39;: 83.8, &#39;pressure&#39;: 1007.1, &#39;cloudcover&#39;: 79.8, &#39;visibility&#39;: 15.5, &#39;solarradiation&#39;: 259.9, &#39;solarenergy&#39;: 22.5, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;sunrise&#39;: &#39;05:03:29&#39;, &#39;sunriseEpoch&#39;: 1733177009, &#39;sunset&#39;: &#39;17:34:34&#39;, &#39;sunsetEpoch&#39;: 1733222074, &#39;moonphase&#39;: 0.07, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;description&#39;: &#39;Partly cloudy throughout the day with rain.&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: [&#39;WARR&#39;, &#39;remote&#39;], &#39;source&#39;: &#39;comb&#39;, &#39;hours&#39;: [{&#39;datetime&#39;: &#39;00:00:00&#39;, &#39;datetimeEpoch&#39;: 1733158800, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 94.19, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 3.6, &#39;winddir&#39;: 241.2, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 7.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;01:00:00&#39;, &#39;datetimeEpoch&#39;: 1733162400, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 25.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 3.6, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 290.0, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 4.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;02:00:00&#39;, &#39;datetimeEpoch&#39;: 1733166000, &#39;temp&#39;: 25.0, &#39;feelslike&#39;: 25.0, &#39;humidity&#39;: 94.19, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 240.0, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 5.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;03:00:00&#39;, &#39;datetimeEpoch&#39;: 1733169600, &#39;temp&#39;: 24.0, &#39;feelslike&#39;: 24.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.1, &#39;precipprob&#39;: 100.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 250.0, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 5.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;04:00:00&#39;, &#39;datetimeEpoch&#39;: 1733173200, &#39;temp&#39;: 24.0, &#39;feelslike&#39;: 24.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 270.0, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 5.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;05:00:00&#39;, &#39;datetimeEpoch&#39;: 1733176800, &#39;temp&#39;: 24.0, &#39;feelslike&#39;: 24.0, &#39;humidity&#39;: 100.0, &#39;dew&#39;: 24.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 3.2, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 240.0, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 4.0, &#39;cloudcover&#39;: 25.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-night&#39;, &#39;stations&#39;: [&#39;WARR&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;06:00:00&#39;, &#39;datetimeEpoch&#39;: 1733180400, &#39;temp&#39;: 26.5, &#39;feelslike&#39;: 26.5, &#39;humidity&#39;: 80.64, &#39;dew&#39;: 22.9, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 0.0, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 6.8, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 159.5, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 40.0, &#39;solarenergy&#39;: 0.1, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: [&#39;remote&#39;], &#39;source&#39;: &#39;obs&#39;}, {&#39;datetime&#39;: &#39;07:00:00&#39;, &#39;datetimeEpoch&#39;: 1733184000, &#39;temp&#39;: 27.8, &#39;feelslike&#39;: 30.4, &#39;humidity&#39;: 71.6, &#39;dew&#39;: 22.2, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 6.5, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 6.8, &#39;winddir&#39;: 147.6, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 210.0, &#39;solarenergy&#39;: 0.8, &#39;uvindex&#39;: 2.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;08:00:00&#39;, &#39;datetimeEpoch&#39;: 1733187600, &#39;temp&#39;: 29.0, &#39;feelslike&#39;: 31.6, &#39;humidity&#39;: 63.98, &#39;dew&#39;: 21.5, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 11.2, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 155.4, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 417.0, &#39;solarenergy&#39;: 1.5, &#39;uvindex&#39;: 4.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;09:00:00&#39;, &#39;datetimeEpoch&#39;: 1733191200, &#39;temp&#39;: 30.3, &#39;feelslike&#39;: 32.9, &#39;humidity&#39;: 57.92, &#39;dew&#39;: 21.1, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 7.2, &#39;windspeed&#39;: 6.5, &#39;winddir&#39;: 159.2, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 83.4, &#39;solarradiation&#39;: 632.0, &#39;solarenergy&#39;: 2.3, &#39;uvindex&#39;: 6.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Partially cloudy&#39;, &#39;icon&#39;: &#39;partly-cloudy-day&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;10:00:00&#39;, &#39;datetimeEpoch&#39;: 1733194800, &#39;temp&#39;: 31.6, &#39;feelslike&#39;: 34.4, &#39;humidity&#39;: 53.78, &#39;dew&#39;: 21.1, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 6.1, &#39;windspeed&#39;: 5.4, &#39;winddir&#39;: 139.7, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 828.0, &#39;solarenergy&#39;: 3.0, &#39;uvindex&#39;: 8.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;11:00:00&#39;, &#39;datetimeEpoch&#39;: 1733198400, &#39;temp&#39;: 32.7, &#39;feelslike&#39;: 35.7, &#39;humidity&#39;: 50.23, &#39;dew&#39;: 21.0, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 113.4, &#39;pressure&#39;: 1007.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 916.0, &#39;solarenergy&#39;: 3.3, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;12:00:00&#39;, &#39;datetimeEpoch&#39;: 1733202000, &#39;temp&#39;: 33.0, &#39;feelslike&#39;: 35.8, &#39;humidity&#39;: 48.78, &#39;dew&#39;: 20.8, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 4.7, &#39;winddir&#39;: 74.9, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 896.0, &#39;solarenergy&#39;: 3.2, &#39;uvindex&#39;: 9.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;13:00:00&#39;, &#39;datetimeEpoch&#39;: 1733205600, &#39;temp&#39;: 32.9, &#39;feelslike&#39;: 35.6, &#39;humidity&#39;: 48.76, &#39;dew&#39;: 20.7, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 22.6, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: None, &#39;windgust&#39;: 5.8, &#39;windspeed&#39;: 7.2, &#39;winddir&#39;: 50.2, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 791.0, &#39;solarenergy&#39;: 2.8, &#39;uvindex&#39;: 8.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;14:00:00&#39;, &#39;datetimeEpoch&#39;: 1733209200, &#39;temp&#39;: 32.6, &#39;feelslike&#39;: 35.3, &#39;humidity&#39;: 49.59, &#39;dew&#39;: 20.7, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 9.0, &#39;winddir&#39;: 51.3, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 633.0, &#39;solarenergy&#39;: 2.3, &#39;uvindex&#39;: 6.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;15:00:00&#39;, &#39;datetimeEpoch&#39;: 1733212800, &#39;temp&#39;: 32.0, &#39;feelslike&#39;: 34.7, &#39;humidity&#39;: 51.93, &#39;dew&#39;: 20.9, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 9.4, &#39;winddir&#39;: 50.4, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 24.1, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 437.0, &#39;solarenergy&#39;: 1.6, &#39;uvindex&#39;: 4.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;16:00:00&#39;, &#39;datetimeEpoch&#39;: 1733216400, &#39;temp&#39;: 31.5, &#39;feelslike&#39;: 34.6, &#39;humidity&#39;: 55.43, &#39;dew&#39;: 21.5, &#39;precip&#39;: 0.0, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.5, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 43.3, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 22.7, &#39;cloudcover&#39;: 98.0, &#39;solarradiation&#39;: 312.0, &#39;solarenergy&#39;: 1.1, &#39;uvindex&#39;: 3.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;17:00:00&#39;, &#39;datetimeEpoch&#39;: 1733220000, &#39;temp&#39;: 30.4, &#39;feelslike&#39;: 34.0, &#39;humidity&#39;: 62.36, &#39;dew&#39;: 22.4, &#39;precip&#39;: 0.2, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 9.4, &#39;windspeed&#39;: 7.6, &#39;winddir&#39;: 36.8, &#39;pressure&#39;: 1005.0, &#39;visibility&#39;: 22.9, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 126.0, &#39;solarenergy&#39;: 0.5, &#39;uvindex&#39;: 1.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;18:00:00&#39;, &#39;datetimeEpoch&#39;: 1733223600, &#39;temp&#39;: 28.8, &#39;feelslike&#39;: 32.5, &#39;humidity&#39;: 71.78, &#39;dew&#39;: 23.2, &#39;precip&#39;: 0.6, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 9.4, &#39;windspeed&#39;: 6.5, &#39;winddir&#39;: 37.2, &#39;pressure&#39;: 1006.0, &#39;visibility&#39;: 12.5, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Overcast&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;19:00:00&#39;, &#39;datetimeEpoch&#39;: 1733227200, &#39;temp&#39;: 28.0, &#39;feelslike&#39;: 31.6, &#39;humidity&#39;: 77.5, &#39;dew&#39;: 23.7, &#39;precip&#39;: 1.7, &#39;precipprob&#39;: 83.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 6.8, &#39;windspeed&#39;: 5.8, &#39;winddir&#39;: 48.8, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 6.5, &#39;cloudcover&#39;: 86.1, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Rain, Partially cloudy&#39;, &#39;icon&#39;: &#39;rain&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;20:00:00&#39;, &#39;datetimeEpoch&#39;: 1733230800, &#39;temp&#39;: 27.6, &#39;feelslike&#39;: 31.0, &#39;humidity&#39;: 79.81, &#39;dew&#39;: 23.8, &#39;precip&#39;: 1.5, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 4.7, &#39;windspeed&#39;: 4.0, &#39;winddir&#39;: 71.7, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 6.7, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;21:00:00&#39;, &#39;datetimeEpoch&#39;: 1733234400, &#39;temp&#39;: 27.5, &#39;feelslike&#39;: 30.8, &#39;humidity&#39;: 80.28, &#39;dew&#39;: 23.8, &#39;precip&#39;: 0.8, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 4.3, &#39;windspeed&#39;: 3.2, &#39;winddir&#39;: 56.8, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 7.8, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;22:00:00&#39;, &#39;datetimeEpoch&#39;: 1733238000, &#39;temp&#39;: 27.1, &#39;feelslike&#39;: 30.0, &#39;humidity&#39;: 81.69, &#39;dew&#39;: 23.7, &#39;precip&#39;: 0.9, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 5.0, &#39;windspeed&#39;: 4.3, &#39;winddir&#39;: 93.5, &#39;pressure&#39;: 1009.0, &#39;visibility&#39;: 8.0, &#39;cloudcover&#39;: 98.8, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}, {&#39;datetime&#39;: &#39;23:00:00&#39;, &#39;datetimeEpoch&#39;: 1733241600, &#39;temp&#39;: 27.1, &#39;feelslike&#39;: 30.0, &#39;humidity&#39;: 81.2, &#39;dew&#39;: 23.6, &#39;precip&#39;: 0.5, &#39;precipprob&#39;: 41.9, &#39;snow&#39;: 0.0, &#39;snowdepth&#39;: 0.0, &#39;preciptype&#39;: [&#39;rain&#39;], &#39;windgust&#39;: 2.5, &#39;windspeed&#39;: 1.8, &#39;winddir&#39;: 93.8, &#39;pressure&#39;: 1008.0, &#39;visibility&#39;: 13.9, &#39;cloudcover&#39;: 100.0, &#39;solarradiation&#39;: 0.0, &#39;solarenergy&#39;: 0.0, &#39;uvindex&#39;: 0.0, &#39;severerisk&#39;: 10.0, &#39;conditions&#39;: &#39;Overcast&#39;, &#39;icon&#39;: &#39;cloudy&#39;, &#39;stations&#39;: None, &#39;source&#39;: &#39;fcst&#39;}]}], &#39;stations&#39;: {&#39;WARR&#39;: {&#39;distance&#39;: 14094.0, &#39;latitude&#39;: -7.38, &#39;longitude&#39;: 112.78, &#39;useCount&#39;: 0, &#39;id&#39;: &#39;WARR&#39;, &#39;name&#39;: &#39;WARR&#39;, &#39;quality&#39;: 49, &#39;contribution&#39;: 0.0}}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_hour</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">hour</span> <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;days&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hours&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">hour</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;03:00:00&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="n">df_tes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">selected_hour</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df_tes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;snowdepth&#39;</span><span class="p">,</span> <span class="s1">&#39;snow&#39;</span><span class="p">,</span> <span class="s1">&#39;preciptype&#39;</span><span class="p">,</span> <span class="s1">&#39;precipprob&#39;</span><span class="p">,</span> <span class="s1">&#39;precip&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;icon&#39;</span><span class="p">,</span> <span class="s1">&#39;stations&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;datetimeEpoch&#39;</span><span class="p">,</span> <span class="s1">&#39;solarradiation&#39;</span><span class="p">,</span> <span class="s1">&#39;solarenergy&#39;</span><span class="p">,</span> <span class="s1">&#39;uvindex&#39;</span> <span class="p">,</span> <span class="s1">&#39;severerisk&#39;</span><span class="p">,</span> <span class="s1">&#39;pressure&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label_mapping</span><span class="p">)</span>
+<span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder_new</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_tes</span><span class="p">[</span><span class="s1">&#39;conditions&#39;</span><span class="p">])</span>
+
+<span class="n">df_tes_reordered</span> <span class="o">=</span> <span class="n">df_tes</span><span class="p">[</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_tes_reordered</span><span class="p">)</span>
+<span class="n">y_pred</span>
+
+<span class="n">rf_pred_decoded</span> <span class="o">=</span> <span class="n">label_encoder_new</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="n">rf_pred_decoded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Cloudy&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://huggingface.co/spaces/Rieko00/Cuaca_sby">https://huggingface.co/spaces/Rieko00/Cuaca_sby</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Selamat datang</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Saham_uni.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Project 2 Prediksi Saham Univariate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-library">Load Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda">EDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info-data">Info Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-data-untuk-eda">Encoding Data Untuk EDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-data">Histogram Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation-matrix">Corelation Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepocessing">Prepocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-mapping">Label Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-feature">Select Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label">Encoding Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corelation-matrix-setelah-prepocessing">Corelation Matrix Setelah Prepocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-setiap-class">Jumlah Data Setiap Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-dengan-oversampling-smote">Balancing dengan Oversampling Smote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-data-setiap-class-setelah-balancing">Jumlah Data Setiap Class Setelah Balancing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-random-forest">Modelling dengan Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-data-tes">Confusion Matrix Data Tes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-score">Cross Validation Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-setiap-fold">Confusion Matrix Setiap Fold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-rf">Grid Search RF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-parameters">Best Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Moch. Ariek Budianto
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
